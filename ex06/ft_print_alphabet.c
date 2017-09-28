@@ -2,9 +2,9 @@ void	ft_putchar (char c);
 
 void	ft_print_alphabet(void)
 {
-	char i;
+	char c;
 
-	i = 96;
-	while (++i <= 122)
-		ft_putchar(i);
+	c = '`';
+	while (++c <= 'z')
+		ft_putchar(c);
 }

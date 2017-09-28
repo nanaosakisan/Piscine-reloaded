@@ -2,9 +2,9 @@ void	ft_putchar(char c);
 
 void	ft_print_numbers(void)
 {
-	char i;
+	char c;
 
-	i = 47;
-	while (++i <= 57)
-		ft_putchar(i);
+	c = '0';
+	while (c <= '9')
+		ft_putchar(c++);
 }
