@@ -1,68 +1,76 @@
-#include <unistd.h>
+#include    <unistd.h>
 
-void	ft_putchar(char c)
+void     ft_putchar(char c)
 {
-	write(1, &c, 1);
+    write(1, &c, 1);
+
 }
 
-int	ft_strcmp(char *s1, char *s2)
+void     ft_putstr(char *str)
 {
-	int i;
+    int i;
 
-	i = 0;
-	while (s1[i] && s2[i])
-	{
-		if (s1[i] != s2[i])
-			return (s1[i] - s2[i]);
-		i++;
-	}
-	return (s1[i] - s2[i]);
+    i = 0;
+    while (str[i])
+    {
+        ft_putchar(str[i]);
+        i++;
+    }
 }
 
-void	ft_swap(char *argv[i], char *argv[j])
+int     ft_strcmp(char *s1, char *s2)
 {
-	int tmp;
+    int i;
 
-	tmp = 0;
-	while (argv[i][k] && argv[j][k])
-	{
-		if(ft_strcmp(argv[i][k], argv[j][k]) > 0)
-		{
-			&tmp = &argv[i];
-			&argv[i] = &argv[j];
-			&argv[j] = &tmp;
-			i = 1;
-		}	
-		i++;
-	}
+    i = 0;
+    while (s1[i] && s1[i])
+    {
+        if (s1[i] != s2[i])
+            return (s1[i] - s2[i]);
+        i++;
+    }
+    return (s1[i] - s2[i]);
 }
 
-void	ft_sort_params(char **argv)
+void     ft_swap(char **argv)
 {
-	int i;
-	int j;
-	int k;
+    int i;
+    char *tmp;
 
-	i = 1;
-	j = i + 1;
-	k = 0;
-	ft_swap(argv[i][k], argv[j][k]);
-	while (argv[i])
-	{
-		k = 0;
-		while (argv[i][k])
-		{
-			ft_putchar(argv[i][k]);
-			k++;
-		}
-		ft_putchar('\n');
-		i++;
-	}
+    i = 1;
+    tmp = 0;
+    while (argv[i] && argv[i + 1])
+    {
+        if (ft_strcmp(argv[i], argv[i + 1]) > 0)
+        {
+            tmp = argv[i];
+            argv[i] = argv[i + 1];
+            argv[i + 1] = tmp;
+            i = 0;
+        }
+        i++;
+    }
 }
 
-int	main(int argc, char **argv)
+int     ft_sort_params(char **argv)
 {
-	if (argc > 1)
-		ft_sort_params(argv);
-	return(0);
+    int i;
+
+    i = 1;
+    ft_swap(argv);
+    while (argv[i])
+    {
+        ft_putstr(argv[i]);
+        ft_putchar('\n');
+        i++;
+    }
+}
+
+int     main(int argc, char **argv)
+{
+    if (argc > 1)
+    {
+        ft_sort_params(argv);
+    }
+    return (0);
 }
